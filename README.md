@@ -42,6 +42,13 @@ $ vagrant plugin install vagrant-vyos
 $ vagrant up
 ```
 
+#### Connect to routers/server
+
+```
+$ vagrant status
+$ vagrant ssh routerA
+```
+
 ### Clean scenario
 
 ```
