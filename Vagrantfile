@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 
     device.vm.hostname = "routerA"
     device.vm.box = "higebu/vyos"
-    device.vm.box_version = "1.1.7"
+    device.vm.box_version = "1.3.0"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "routerA"
@@ -23,10 +23,10 @@ Vagrant.configure(2) do |config|
     device.vm.synced_folder ".", "/vagrant", disabled: true
 
     # NETWORK INTERFACES
-      device.vm.network "private_network", ip: "192.168.0.100"
+    device.vm.network "private_network", ip: "192.168.56.100"
 
-      # link for eth --> routerA <-> routerB
-      device.vm.network "private_network", virtualbox__intnet: "net5", auto_config: false
+    # link for eth --> routerA <-> routerB
+    device.vm.network "private_network", virtualbox__intnet: "net5", auto_config: false
 
   end
 
@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
 
     device.vm.hostname = "routerB"
     device.vm.box = "higebu/vyos"
-    device.vm.box_version = "1.1.7"
+    device.vm.box_version = "1.3.0"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "routerB"
@@ -45,10 +45,10 @@ Vagrant.configure(2) do |config|
     device.vm.synced_folder ".", "/vagrant", disabled: true
 
     # NETWORK INTERFACES
-      device.vm.network "private_network", ip: "192.168.0.101"
+    device.vm.network "private_network", ip: "192.168.56.101"
 
-      # link for eth --> routerB <-> routerA
-      device.vm.network "private_network", virtualbox__intnet: "net5", auto_config: false
+    # link for eth --> routerB <-> routerA
+    device.vm.network "private_network", virtualbox__intnet: "net5", auto_config: false
 
   end
 
@@ -65,7 +65,7 @@ Vagrant.configure(2) do |config|
     #   see note here: https://github.com/pradels/vagrant-libvirt#synced-folders
     device.vm.synced_folder ".", "/vagrant"
 
-    device.vm.network "private_network", ip: "192.168.0.200"
+    device.vm.network "private_network", ip: "192.168.56.200"
 
     # Fixes "stdin: is not a tty" and "mesg: ttyname failed : Inappropriate ioctl for device"  messages --> https://github.com/mitchellh/vagrant/issues/1673
     device.vm.provision :shell , inline: "(sudo grep -q 'mesg n' /root/.profile 2>/dev/null && sudo sed -i '/mesg n/d' /root/.profile  2>/dev/null) || true;", privileged: false

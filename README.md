@@ -3,21 +3,21 @@
 # Vagrant Lab Environment
 
 ```
-+---------------+               +---------------+
-|    routerA    |eth2       eth2|    routerB    |
-|      VyOS     +---------------+      VyOS     |
-| 192.168.0.100 |               | 192.168.0.101 |
-+--------+------+               +-------+-------+
-         | eth1                    eth1 |
-         |      oob mgmt network        |
-       +-+--------------+---------------+-+
++----------------+               +----------------+
+|    routerA     |eth2       eth2|    routerB     |
+|      VyOS      +---------------+      VyOS      |
+| 192.168.56.100 |               | 192.168.56.101 |
++--------+-------+               +-------+--------+
+         | eth1                    eth1  |
+         |      oob mgmt network         |
+       +-+--------------+----------------+-+
                         |
                         |
-                +-------+-------+
-                |     mgmt      |
-                |    Ubuntu     |
-                | 192.168.0.200 |
-                +---------------+
+                +-------+--------+
+                |     mgmt       |
+                |    Ubuntu      |
+                | 192.168.56.200 |
+                +----------------+
 ```
 
 ## Setup the environment
@@ -48,6 +48,8 @@ $ vagrant up
 $ vagrant status
 $ vagrant ssh routerA
 ```
+
+> Credentials: vyos/vyos
 
 ### Clean scenario
 
