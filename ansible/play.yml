@@ -1,0 +1,15 @@
+---
+- name: "TEST NAUTOBOT INVENTORY"
+  connection: "network_cli"
+  hosts: "all"
+  gather_facts: "no"
+
+  tasks:
+    - name: "get facts"
+      vyos.vyos.vyos_facts:
+        gather_subset: config
+      register: ansible_facts
+
+    - name: "Get deprecations"
+      debug:
+        msg: "{{ ansible_facts['deprecations'] }}"
